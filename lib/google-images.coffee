@@ -26,8 +26,9 @@ exports.search = (query, options) ->
 		callback = options.callback if options.callback?
 	
 	options.page = 0 if not options.page?
+	options.hl = 'en' if not options.hl?
 	
-	request "http://ajax.googleapis.com/ajax/services/search/images?v=1.0&q=#{ query.replace(/\s/g, '+') }&start=#{ options.page }", (err, res, body) ->
+	request "http://ajax.googleapis.com/ajax/services/search/images?v=1.0&hl=#{options.hl}&q=#{ query.replace(/\s/g, '+') }&start=#{ options.page }", (err, res, body) ->
 		items = JSON.parse(body).responseData.results
 		images = []
 		for item in items
