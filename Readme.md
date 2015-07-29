@@ -10,6 +10,9 @@ Install from NPM:
 # Usage
 
 ```
+require('google-images').search 'torta', hl: 'hu', callback:(err,images)->images[0].writeTo 'out3.jpg'
+
+
 client = require 'google-images'
 
 client.search 'Michael Jackson', (err, images) ->
